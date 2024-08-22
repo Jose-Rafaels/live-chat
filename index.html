@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Receiver</title>
+  </head>
+  <body>
+    <h1>Chat Messages</h1>
+    <div
+      id="chatbox"
+      style="
+        border: 1px solid #000;
+        padding: 10px;
+        height: 300px;
+        overflow-y: scroll;
+      "
+    ></div>
+
+    <script>
+      let conn = new WebSocket("ws://localhost:8080");
+      let chatbox = document.getElementById("chatbox");
+
+      conn.onmessage = function (e) {
+        let message = JSON.parse(e.data);
+        chatbox.innerHTML += `<p><strong>${message.name}:</strong> ${message.content}</p>`;
+        chatbox.scrollTop = chatbox.scrollHeight; // Scroll to the bottom on new message
+      };
+    </script>
+  </body>
+</html>
