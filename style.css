@@ -1,0 +1,17 @@
+.form-control::placeholder{
+    font-size:x-small;
+    text-align: center;
+    color: red !important ;
+}
+
+body {
+    background-color: #6C97C2 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+.logo{
+    max-width:70%;
+    max-height:min-content;
+}
